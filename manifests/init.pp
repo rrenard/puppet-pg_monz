@@ -11,14 +11,27 @@
 #   e.g. "Specify one or more upstream ntp servers as an array."
 #
 class pg_monz (
-  $package_name = $::pg_monz::params::package_name,
-  $service_name = $::pg_monz::params::service_name,
+
+  $version = $::pg_monz::version,
+  $install_dir = $::pg_monz::install_dir,
+  $download_url = $::pg_monz::download_url,
+  $zabbix_user = $::pg_monz::zabbix_user,
+  $zabbix_group = $::pg_monz::zabbix_group,
+  $pghost = $::pg_monz::pghost,
+  $pgport = $::pg_monz::pgport,
+  $pgrole = $::pg_monz::pgrole,
+  $pgdatabase = $::pg_monz::pgdatabase,
+  $pgpoolhost = $::pg_monz::pgpoolhost,
+  $pgpoolport = $::pg_monz::pgpoolport,
+  $pgpoolrole = $::pg_monz::pgpoolrole,
+  $pgpooldatabase = $::pg_monz::pgpooldatabase,
+  $pgpoolconf = $::pg_monz::pgpoolconf,
+
 ) inherits ::pg_monz::params {
 
   # validate parameters here
 
+  
   class { '::pg_monz::install': } ->
-  class { '::pg_monz::config': } ~>
-  class { '::pg_monz::service': } ->
   Class['::pg_monz']
 }

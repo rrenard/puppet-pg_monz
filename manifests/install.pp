@@ -50,17 +50,21 @@ class pg_monz::install {
     group   => $::pg_monz::zabbix_group,
     mode    => "0600",
     content => template("pg_monz/pgpool_funcs.conf.erb"),
-  } ->
-
-  file { "/etc/zabbix/zabbix_agentd.d/userparameter_pgsql.conf" :
-    ensure  => link,
-    owner   => $::pg_monz::zabbix_user,
-    group   => $::pg_monz::zabbix_group,
-    target   => "${::pg_monz::install_dir}/pg_monz-${::pg_monz::version}/pg_monz/zabbix_agentd.d/userparameter_pgsql.conf",
   }
 
-
+  $data = $::pg_monz::userparameters
   
-
+  if $data != undef {
+    
+    file { '/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf' :
+      ensure  => present,
+      owner   => $::pg_monz::zabbix_user,
+      group   => $::pg_monz::zabbix_group,
+      mode    => '0640',
+      content => template('pg_monz/userparameter_pg_monz.conf.erb'),
+      require => [ Package['zabbix-agent'], Staging::Extract["pg_monz-${::pg_monz::version}.tar.gz"] ],
+      notify  => Service['zabbix-agent'],
+    }
+  }
 
 }

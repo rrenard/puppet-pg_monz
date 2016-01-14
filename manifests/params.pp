@@ -25,4 +25,6 @@ class pg_monz::params {
   $pgpooldatabase = 'postgres'
   $pgpoolconf = '/etc/pgpool/pgpool.conf'
 
+  # User parameters
+  $userparameters = ''
 }

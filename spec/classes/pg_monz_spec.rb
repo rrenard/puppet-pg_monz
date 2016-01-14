@@ -66,13 +66,15 @@ describe 'pg_monz' do
           end
 
 
-          it do
-            should contain_file('/etc/zabbix/zabbix_agentd.d/userparameter_pgsql.conf')
-              .with('ensure' => 'link',
-                    'owner' => 'zabbix',
-                    'group' => 'zabbix',
-                    'target' => '/opt/pg_monz/pg_monz-2.0/pg_monz/zabbix_agentd.d/userparameter_pgsql.conf')
-          end
+#          it do
+#            should contain_file('/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf')
+#              .with('ensure' => 'present',
+#                    'owner' => 'zabbix',
+#                    'group' => 'zabbix',
+#                    'mode' => '0640')
+#              .that_requires('Package[zabbix-agent]')
+#              .that_notifies('Service[zabbix-agent]')
+#          end
           
 
 

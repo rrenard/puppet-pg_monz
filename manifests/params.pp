@@ -26,5 +26,5 @@ class pg_monz::params {
   $pgpoolconf = '/etc/pgpool/pgpool.conf'
 
   # User parameters
-  $userparameters = ''
+  $userparameters = 'UNSET'
 }

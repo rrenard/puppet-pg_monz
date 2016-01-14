@@ -53,18 +53,22 @@ class pg_monz::install {
   }
 
   $data = $::pg_monz::userparameters
-  
-  if $data != '' {
     
-    file { '/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf' :
-      ensure  => present,
-      owner   => $::pg_monz::zabbix_user,
-      group   => $::pg_monz::zabbix_group,
-      mode    => '0640',
-      content => template('pg_monz/userparameter_pg_monz.conf.erb'),
-      require => [ Package['zabbix-agent'], Staging::Extract["pg_monz-${::pg_monz::version}.tar.gz"] ],
-      notify  => Service['zabbix-agent'],
-    }
+  file { '/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf' :
+    ensure  => present,
+    owner   => $::pg_monz::zabbix_user,
+    group   => $::pg_monz::zabbix_group,
+    mode    => '0640',
+    content => template('pg_monz/userparameter_pg_monz.conf.erb'),
+    require => Staging::Extract["pg_monz-${::pg_monz::version}.tar.gz"],
+  } ->
+
+  exec { "zabbix-agent-reload":
+    command => "/usr/sbin/service zabbix-agent reload",
+    user    => "root",
   }
+
+  
+  
 
 }

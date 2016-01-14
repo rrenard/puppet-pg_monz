@@ -66,15 +66,22 @@ describe 'pg_monz' do
           end
 
 
-#          it do
-#            should contain_file('/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf')
-#              .with('ensure' => 'present',
-#                    'owner' => 'zabbix',
-#                    'group' => 'zabbix',
-#                    'mode' => '0640')
-#              .that_requires('Package[zabbix-agent]')
-#              .that_notifies('Service[zabbix-agent]')
-#          end
+          it do
+            should contain_file('/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf')
+              .with('ensure' => 'present',
+                    'owner' => 'zabbix',
+                    'group' => 'zabbix',
+                    'mode' => '0640')
+              .that_requires('Staging::Extract[pg_monz-2.0.tar.gz]')
+              #.that_requires('Package[zabbix-agent]')
+              #.that_notifies('Service[zabbix-agent]')
+          end
+
+          it do
+            should contain_exec('zabbix-agent-reload')
+              .with('command' => '/usr/sbin/service zabbix-agent reload',
+                    'user' => 'root')
+          end
           
 
 

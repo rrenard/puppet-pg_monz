@@ -54,7 +54,7 @@ class pg_monz::install {
 
   $data = $::pg_monz::userparameters
   
-  if $data != undef {
+  if $data != '' {
     
     file { '/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf' :
       ensure  => present,

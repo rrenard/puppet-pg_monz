@@ -2,7 +2,7 @@
   "name": "puppet-pg_monz",
   "version": "0.1.0",
   "author": "shaunr",
-  "summary": "Deploy pgmonz for zabbix",
+  "summary": "pgmonz for zabbix",
   "license": "Apache-2.0",
   "source": "github",
   "project_page": "",

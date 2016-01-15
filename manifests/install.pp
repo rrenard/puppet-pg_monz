@@ -64,7 +64,7 @@ class pg_monz::install {
   } ->
 
   exec { "zabbix-agent-reload":
-    command => "/usr/sbin/service zabbix-agent reload",
+    command => "/etc/init.d/zabbix-agent reload",
     user    => "root",
   }
 

@@ -79,7 +79,7 @@ describe 'pg_monz' do
 
           it do
             should contain_exec('zabbix-agent-reload')
-              .with('command' => '/usr/sbin/service zabbix-agent reload',
+              .with('command' => '/usr/sbin/service zabbix-agent restart',
                     'user' => 'root')
           end
           

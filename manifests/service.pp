@@ -8,7 +8,6 @@ class pg_monz::service {
     command     => '/etc/init.d/zabbix-agent restart',
     user        => 'root',
     refreshonly => true,
-    subscribe   => File['/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf'],
   }
 
 }

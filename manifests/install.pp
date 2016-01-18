@@ -61,7 +61,7 @@ class pg_monz::install {
     mode    => '0640',
     content => template('pg_monz/userparameter_pg_monz.conf.erb'),
     require => Staging::Extract["pg_monz-${::pg_monz::version}.tar.gz"],
-  } ->
+  } ~>
 
   exec { "zabbix-agent-reload":
     command => "/etc/init.d/zabbix-agent restart",

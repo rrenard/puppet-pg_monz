@@ -63,7 +63,7 @@ UserParameter=pgpool.get.cache[*],"$1"/pgpool_cache.sh pgpool.cache $2 "$3" "$4"
 #--- Custom Userparameters -------------------------------------------------
 <% if @data != 'UNSET' -%>
   <% @data.each do |line| -%>
-    <%= line %>
+<%= line %>
   <% end -%>
 <% end -%>
 

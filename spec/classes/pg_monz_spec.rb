@@ -12,7 +12,11 @@ describe 'pg_monz' do
           it { should compile.with_all_deps }
           it { should contain_class('pg_monz') }
           it { should contain_class('pg_monz::params') }
-          it { should contain_class('pg_monz::install') }
+          it { should contain_class('pg_monz::install') 
+            .that_comes_before('pg_monz::config')}
+          it { should contain_class('pg_monz::config') 
+            .that_comes_before('pg_monz::service')}
+          it { should contain_class('pg_monz::service') }
 
           it do 
             should contain_file('/opt/pg_monz')
@@ -79,7 +83,9 @@ describe 'pg_monz' do
           it do
             should contain_exec('zabbix-agent-reload')
               .with('command' => '/etc/init.d/zabbix-agent restart',
-                    'user' => 'root')
+                    'user' => 'root',
+                    'refreshonly' => 'true')
+              .that_subscribes_to('File[/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf')
           end
           
 

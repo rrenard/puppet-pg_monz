@@ -13,48 +13,46 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+Installs and configures pg_monz [http://pg-monz.github.io/pg_monz/index-en.html] on a DB server
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
-
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
+The module will download the specified version and configure pg_monz for use with the zabbix agent
 
 ## Setup
 
 ### What pg_monz affects
 
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
+Files and directories creates
+* /opt/pg_monz - holds the unzipped pg_monz install
+* /etc/pg_monz - configs for pgsql and pgpool. pg_monz uses this to connect the service
+* /etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.con - User Parameters for zabbix. The defaults will be installed and any additional requirements can be added via the 'userparameter' variable
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
+This module requires zabbix-agent and zabbix-sender to be installed. 
+NB: It does not check for these requirements. You must ensure these packages are installed before installing pg_monz
 
 ### Beginning with pg_monz
 
-The very basic steps needed for a user to get the module up and running. 
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+Install the module in puppet
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
-
-## Reference
-
-Here, list the classes, types, providers, facts, etc contained in your module. This section should include all of the under-the-hood workings of your module so people know what the module is touching on their system but don't need to mess with things. (We are working on automating this section!)
+Include the class in your setup
+```puppet
+class { pg_monz:
+  vesion => '2.0',
+}
+```
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Tested on RHEL 6/7. 
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
+PR's welcome
 
-## Release Notes/Contributors/Etc **Optional**
 
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+

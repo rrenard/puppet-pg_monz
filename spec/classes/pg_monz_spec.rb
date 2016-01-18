@@ -73,8 +73,7 @@ describe 'pg_monz' do
                     'group' => 'zabbix',
                     'mode' => '0640')
               .that_requires('Staging::Extract[pg_monz-2.0.tar.gz]')
-              #.that_requires('Package[zabbix-agent]')
-              #.that_notifies('Service[zabbix-agent]')
+              .that_notifies('Exec[zabbix-agent-reload]')
           end
 
           it do

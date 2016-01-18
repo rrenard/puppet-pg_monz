@@ -1,4 +1,4 @@
-#--format documentation
-#--color
---format RspecJunitFormatter
---out test-reports/rspec.xml
+--format documentation
+--color
+#--format RspecJunitFormatter
+#--out test-reports/rspec.xml

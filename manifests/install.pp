@@ -34,6 +34,6 @@ class pg_monz::install {
     owner  => $::pg_monz::zabbix_user,
     group  => $::pg_monz::zabbix_group,
     mode   => '0750',
-  } 
+  }
 
 }

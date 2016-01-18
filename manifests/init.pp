@@ -34,7 +34,7 @@ class pg_monz (
 
   
   class { '::pg_monz::install': } ->
-  class { '::pg_monz::config': } ->
+  class { '::pg_monz::config': } ~>
   class { '::pg_monz::service': } ->
   Class['::pg_monz']
 }

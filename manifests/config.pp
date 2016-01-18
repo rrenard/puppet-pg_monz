@@ -11,7 +11,7 @@ class pg_monz::config {
     mode    => '0600',
     content => template('pg_monz/pgsql_funcs.conf.erb'),
     require => File['/etc/pg_monz'],
-  } 
+  }
 
   file { '/etc/pg_monz/pgpool_funcs.conf' :
     ensure  => present,
@@ -33,6 +33,4 @@ class pg_monz::config {
     require => Staging::Extract["pg_monz-${::pg_monz::version}.tar.gz"],
   }
 
-
 }
-

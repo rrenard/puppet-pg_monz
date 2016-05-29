@@ -53,6 +53,3 @@ Tested on RHEL 6/7.
 ## Development
 
 PR's welcome
-
-
-

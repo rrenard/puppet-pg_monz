@@ -10,16 +10,14 @@ class pg_monz::install {
     group  => $::pg_monz::zabbix_group,
     mode   => '0750',
   } ->
-      
-  staging::file { "pg_monz-${::pg_monz::version}.tar.gz":
-    source => "${::pg_monz::download_url}/${::pg_monz::version}.tar.gz",
-  } ->
 
-  staging::extract { "pg_monz-${::pg_monz::version}.tar.gz":
-    target  => $::pg_monz::install_dir,
-    creates => "${::pg_monz::install_dir}/pg_monz-${::pg_monz::version}/LICENSE",
-    user    => $::pg_monz::zabbix_user,
-    group   => $::pg_monz::zabbix_group,
+  archive { "$::pg_monz::install_dir/pg_monz-${::pg_monz::version}.tar.gz":
+    source       => "${::pg_monz::download_url}/${::pg_monz::version}.tar.gz",
+    extract      => true,
+    extract_path => $::pg_monz::install_dir,
+    creates      => "${::pg_monz::install_dir}/pg_monz-${::pg_monz::version}/LICENSE",
+    user         => $::pg_monz::zabbix_user,
+    group        => $::pg_monz::zabbix_group,
   } ->
 
   file { '/usr/local/bin/pg_monz' :

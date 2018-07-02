@@ -30,7 +30,7 @@ class pg_monz::config {
     group   => $::pg_monz::zabbix_group,
     mode    => '0640',
     content => template('pg_monz/userparameter_pg_monz.conf.erb'),
-    require => Staging::Extract["pg_monz-${::pg_monz::version}.tar.gz"],
+    require => Archive["$::pg_monz::install_dir/pg_monz-${::pg_monz::version}.tar.gz"],
   }
 
 }

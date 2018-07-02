@@ -24,7 +24,7 @@ class pg_monz::config {
 
   $data = $::pg_monz::userparameters
     
-  file { '/etc/zabbix/zabbix_agentd.d/userparameter_pg_monz.conf' :
+  file { "$::pg_monz::userparameters_dir/userparameter_pg_monz.conf" :
     ensure  => present,
     owner   => $::pg_monz::zabbix_user,
     group   => $::pg_monz::zabbix_group,

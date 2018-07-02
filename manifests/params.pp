@@ -26,5 +26,6 @@ class pg_monz::params {
   $pgpoolconf = '/etc/pgpool/pgpool.conf'
 
   # User parameters
+  $userparameters_dir = '/etc/zabbix/zabbix_agentd.d'
   $userparameters = 'UNSET'
 }

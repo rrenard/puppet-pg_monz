@@ -27,6 +27,7 @@ class pg_monz (
   $pgpooldatabase = $::pg_monz::pgpooldatabase,
   $pgpoolconf = $::pg_monz::pgpoolconf,
   $userparameters_dir = $::pg_monz::userparameters_dir,
+  $userparameters_cmd_prefix = $::pg_monz::userparameters_cmd_prefix,
   $userparameters = $::pg_monz::userparameters,
 
 ) inherits ::pg_monz::params {

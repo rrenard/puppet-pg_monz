@@ -27,5 +27,6 @@ class pg_monz::params {
 
   # User parameters
   $userparameters_dir = '/etc/zabbix/zabbix_agentd.d'
+  $userparameters_cmd_prefix = ''
   $userparameters = 'UNSET'
 }

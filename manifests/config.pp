@@ -22,6 +22,7 @@ class pg_monz::config {
     require => File['/etc/pg_monz'],
   }
 
+  $cmd_pfx = $::pg_monz::userparameters_cmd_prefix
   $data = $::pg_monz::userparameters
     
   file { "$::pg_monz::userparameters_dir/userparameter_pg_monz.conf" :

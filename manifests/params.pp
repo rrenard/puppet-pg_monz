@@ -6,7 +6,7 @@
 class pg_monz::params {
 
   # Common settings
-  $version = '2.0'
+  $version = '2.1'
   $install_dir = '/opt/pg_monz'
   $download_url = 'https://github.com/pg-monz/pg_monz/archive'
   $zabbix_user = 'zabbix'

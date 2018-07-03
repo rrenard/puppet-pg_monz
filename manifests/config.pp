@@ -27,9 +27,9 @@ class pg_monz::config {
     
   file { "$::pg_monz::userparameters_dir/userparameter_pg_monz.conf" :
     ensure  => present,
-    owner   => $::pg_monz::zabbix_user,
-    group   => $::pg_monz::zabbix_group,
-    mode    => '0640',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     content => template('pg_monz/userparameter_pg_monz.conf.erb'),
     require => Archive["$::pg_monz::install_dir/pg_monz-${::pg_monz::version}.tar.gz"],
   }

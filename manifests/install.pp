@@ -29,8 +29,8 @@ class pg_monz::install {
 
   file { '/etc/pg_monz' :
     ensure => directory,
-    owner  => $::pg_monz::zabbix_user,
-    group  => $::pg_monz::zabbix_group,
+    owner  => $::pg_monz::config_user,
+    group  => $::pg_monz::config_group,
     mode   => '0750',
   }
 

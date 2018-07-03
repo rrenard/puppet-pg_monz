@@ -6,8 +6,8 @@ class pg_monz::config {
 
   file { '/etc/pg_monz/pgsql_funcs.conf' :
     ensure  => present,
-    owner   => $::pg_monz::zabbix_user,
-    group   => $::pg_monz::zabbix_group,
+    owner   => $::pg_monz::config_user,
+    group   => $::pg_monz::config_group,
     mode    => '0600',
     content => template('pg_monz/pgsql_funcs.conf.erb'),
     require => File['/etc/pg_monz'],
@@ -15,8 +15,8 @@ class pg_monz::config {
 
   file { '/etc/pg_monz/pgpool_funcs.conf' :
     ensure  => present,
-    owner   => $::pg_monz::zabbix_user,
-    group   => $::pg_monz::zabbix_group,
+    owner   => $::pg_monz::config_user,
+    group   => $::pg_monz::config_group,
     mode    => '0600',
     content => template('pg_monz/pgpool_funcs.conf.erb'),
     require => File['/etc/pg_monz'],

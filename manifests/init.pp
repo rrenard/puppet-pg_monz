@@ -17,6 +17,8 @@ class pg_monz (
   $download_url = $::pg_monz::download_url,
   $zabbix_user = $::pg_monz::zabbix_user,
   $zabbix_group = $::pg_monz::zabbix_group,
+  $config_user = $::pg_monz::config_user,
+  $config_group = $::pg_monz::config_group,
   $pghost = $::pg_monz::pghost,
   $pgport = $::pg_monz::pgport,
   $pgrole = $::pg_monz::pgrole,

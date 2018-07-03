@@ -11,6 +11,8 @@ class pg_monz::params {
   $download_url = 'https://github.com/pg-monz/pg_monz/archive'
   $zabbix_user = 'zabbix'
   $zabbix_group = 'zabbix'
+  $config_user = 'zabbix'
+  $config_group = 'zabbix'
 
   # PGSQL settings
   $pghost = 'localhost'
